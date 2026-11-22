@@ -1,0 +1,33 @@
+/* Фон страниц */
+body {
+    background-color: #f4f6fa;
+}
+
+/* Карточки */
+.card {
+    border: 1px solid #e2e6ed;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+/* Изображения сохраняют пропорции */
+.object-fit-contain {
+    object-fit: contain;
+}
+
+/* Фотографии игроков */
+.object-fit-cover {
+    object-fit: cover;
+}
+
+/* Кнопки и поля форм */
+.btn,
+.form-control,
+.form-select {
+    border-radius: 8px;
+}
+
+/* Подсветка строк таблиц */
+.table tbody tr:hover {
+    background-color: #edf3ff;
+}

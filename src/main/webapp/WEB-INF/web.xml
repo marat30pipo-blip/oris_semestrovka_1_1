@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                             http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+    <display-name>Дружба Cup</display-name>
+
+    <filter>
+        <filter-name>authFilter</filter-name>
+        <filter-class>ru.itis.filters.AuthFilter</filter-class>
+    </filter>
+
+    <filter>
+        <filter-name>adminFilter</filter-name>
+        <filter-class>ru.itis.filters.AdminFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>authFilter</filter-name>
+
+        <url-pattern>/home</url-pattern>
+        <url-pattern>/jsp/home.jsp</url-pattern>
+
+        <url-pattern>/tournament</url-pattern>
+        <url-pattern>/jsp/tournament.jsp</url-pattern>
+
+        <url-pattern>/files</url-pattern>
+
+        <url-pattern>/teams</url-pattern>
+        <url-pattern>/jsp/teams.jsp</url-pattern>
+
+        <url-pattern>/team</url-pattern>
+        <url-pattern>/jsp/team.jsp</url-pattern>
+
+        <url-pattern>/players</url-pattern>
+        <url-pattern>/jsp/players.jsp</url-pattern>
+
+        <url-pattern>/player</url-pattern>
+        <url-pattern>/jsp/player.jsp</url-pattern>
+
+        <url-pattern>/match</url-pattern>
+        <url-pattern>/jsp/match.jsp</url-pattern>
+
+        <url-pattern>/matches/filter</url-pattern>
+        <url-pattern>/jsp/matchesTable.jsp</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>adminFilter</filter-name>
+
+        <url-pattern>/admin</url-pattern>
+        <url-pattern>/admin/*</url-pattern>
+
+        <url-pattern>/jsp/teamForm.jsp</url-pattern>
+        <url-pattern>/jsp/teamEdit.jsp</url-pattern>
+        <url-pattern>/jsp/teamEmblem.jsp</url-pattern>
+
+        <url-pattern>/jsp/tournamentTeamForm.jsp</url-pattern>
+        <url-pattern>/jsp/tournamentForm.jsp</url-pattern>
+        <url-pattern>/jsp/tournamentEdit.jsp</url-pattern>
+
+        <url-pattern>/jsp/seasonForm.jsp</url-pattern>
+
+        <url-pattern>/jsp/matchForm.jsp</url-pattern>
+        <url-pattern>/jsp/matchEdit.jsp</url-pattern>
+        <url-pattern>/jsp/matchRosterForm.jsp</url-pattern>
+
+        <url-pattern>/jsp/playerForm.jsp</url-pattern>
+        <url-pattern>/jsp/playerEdit.jsp</url-pattern>
+        <url-pattern>/jsp/playerPhoto.jsp</url-pattern>
+        <url-pattern>/jsp/playerTeamPeriodForm.jsp</url-pattern>
+        <url-pattern>/jsp/playerTeamPeriodClose.jsp</url-pattern>
+
+        <url-pattern>/jsp/goalForm.jsp</url-pattern>
+    </filter-mapping>
+
+    <welcome-file-list>
+        <welcome-file>signIn</welcome-file>
+    </welcome-file-list>
+
+</web-app>
