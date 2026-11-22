@@ -44,6 +44,12 @@ public class TournamentsRepositoryJdbcImpl implements TournamentsRepository {
                     "WHERE tt.team_id = ? AND s.year = ? " +
                     "ORDER BY t.start_date, t.tournament_id";
 
+    private static final String SQL_SELECT_MATCH_OUTSIDE_DATES =
+            "SELECT 1 FROM matches " +
+                    "WHERE tournament_id = ? " +
+                    "AND (match_date < ? OR match_date > ?) " +
+                    "LIMIT 1";
+
     public TournamentsRepositoryJdbcImpl(DataSource dataSource) {
         this.dataSource = dataSource;
     }
@@ -159,6 +165,22 @@ public class TournamentsRepositoryJdbcImpl implements TournamentsRepository {
                 }
 
                 return tournaments;
+            }
+        }
+    }
+
+    @Override
+    public boolean hasMatchesOutsideDates(int tournamentId, LocalDate startDate, LocalDate endDate) throws SQLException {
+
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(SQL_SELECT_MATCH_OUTSIDE_DATES)) {
+
+            preparedStatement.setInt(1, tournamentId);
+            preparedStatement.setObject(2, startDate, Types.DATE);
+            preparedStatement.setObject(3, endDate, Types.DATE);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                return resultSet.next();
             }
         }
     }

@@ -47,6 +47,11 @@ public class TournamentsServiceImpl implements TournamentsService {
 
         TournamentForm preparedForm = validateAndPrepareForm(form);
 
+        if (tournamentsRepository.hasMatchesOutsideDates(tournamentId, preparedForm.getStartDate(), preparedForm.getEndDate())) {
+
+            throw new IllegalArgumentException("Вне выбранных дат остаются матчи турнира. Сначала измените даты этих матчей");
+        }
+
         return tournamentsRepository.update(tournamentId, preparedForm);
     }
 

@@ -318,6 +318,12 @@ public class MatchesServiceImpl implements MatchesService{
             throw new IllegalArgumentException("Турнир не найден");
         }
 
+        if (form.getMatchDate() != null) {
+            if (form.getMatchDate().isBefore(tournament.getStartDate()) || form.getMatchDate().isAfter(tournament.getEndDate())) {
+                throw new IllegalArgumentException("Дата матча должна быть в пределах турнира: с " + tournament.getStartDate() + " по " + tournament.getEndDate());
+            }
+        }
+
         validateStage(form, tournament);
         validatePenaltiesAndTechnicalResult(form, tournament);
         validateVenue(form.getVenueId());

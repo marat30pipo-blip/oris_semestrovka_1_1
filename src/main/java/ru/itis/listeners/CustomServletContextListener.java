@@ -15,7 +15,7 @@ public class CustomServletContextListener implements ServletContextListener {
 
     private static final String DB_URL = "jdbc:postgresql://localhost:5432/druzhba_cup";
     private static final String DB_USERNAME = "postgres";
-    private static final String DB_PASSWORD = "";
+    private static final String DB_PASSWORD = "IV2007@$";
 
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {

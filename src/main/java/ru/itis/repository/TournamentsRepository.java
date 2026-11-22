@@ -5,6 +5,7 @@ import ru.itis.dto.TournamentForm;
 import ru.itis.models.Tournament;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.List;
 
 public interface TournamentsRepository {
@@ -13,4 +14,5 @@ public interface TournamentsRepository {
     boolean save(TournamentForm form) throws SQLException;
     boolean update(int tournamentId, TournamentForm form) throws SQLException;
     List<Tournament> findByTeamIdAndSeasonYear(int teamId, int seasonYear) throws SQLException;
+    boolean hasMatchesOutsideDates(int tournamentId, LocalDate startDate, LocalDate endDate) throws SQLException;
 }
